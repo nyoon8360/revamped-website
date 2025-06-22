@@ -28,3 +28,5 @@ function getCookie(name) {
 function setCookie(name, value, configs = "") {
     document.cookie = `${name}=${value}${configs ? `;${configs}` : ""}`;
 }
+
+export { getCookie, setCookie };
