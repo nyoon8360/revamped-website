@@ -1,8 +1,9 @@
-import { getCookie } from "@/utilities/cookieUtility";
+'use client';
+
 import "./globals.scss";
 import DefaultLanding from "@/backgrounds/default/defaultLanding";
 import BackgroundLake from "@/backgrounds/lake/backgroundLake";
-
+import { useBackgroundStore } from '@/stores/background-store';
 
 export default function Layout({ children }) {
   const headerTabs = [
@@ -28,17 +29,18 @@ export default function Layout({ children }) {
     }
   ];
 
+  const { background } = useBackgroundStore();
+
   return (
     <html lang="en">
-      {renderBackground(children, headerTabs)}
+      {renderBackground(background, children, headerTabs)}
     </html>
   );
 }
 
-function renderBackground(children, headerTabs) {
-  let selectedBackground = getCookie("nyoon_background");
+function renderBackground(selectedBackground, children, headerTabs) {
 
-  if (selectedBackground === null) return <DefaultLanding/>;
+  if (selectedBackground === null || selectedBackground === "none") return <DefaultLanding/>;
 
   switch (selectedBackground) {
     case "lake":

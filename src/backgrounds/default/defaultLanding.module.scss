@@ -1,0 +1,23 @@
+.mainElement {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+
+    .headerText {
+        color: white;
+    }
+
+    .backgroundOptionsContainer {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        flex-wrap: wrap;
+        column-gap: 16px;
+        row-gap: 16px;
+        justify-content: center;
+        align-content: center;
+    }
+}
