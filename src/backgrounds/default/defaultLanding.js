@@ -9,13 +9,13 @@ export default function DefaultLanding() {
             id: "lakeOptionButton",
             label: "Lake",
             backgroundValue: "lake",
-            imgSrc: ""
+            imgSrc: "/images/test-icon.png"
         },
         {
             id: "oceanOptionButton",
             label: "Ocean",
             backgroundValue: "ocean",
-            imgSrc: ""
+            imgSrc: "/images/test-icon.png"
         }
     ];
 
@@ -24,17 +24,15 @@ export default function DefaultLanding() {
     });
 
     return (
-        <body>
-            <main className={styles.mainElement}>
-                <h1 className={styles.headerText}>Where would you like to go?</h1>
-                <div className={styles.backgroundOptionsContainer}>
-                    {backgroundOptions.map((option) => (
-                        <BackgroundOptionBtn key={option.id} id={option.id} backgroundValue={option.backgroundValue} imgSrc={option.imgSrc}>
-                            {option.label}
-                        </BackgroundOptionBtn>
-                    ))}
-                </div>
-            </main>
-        </body>
+        <main className={styles.mainElement}>
+            <h1 className={styles.headerText}>Where would you like to go?</h1>
+            <div className={styles.backgroundOptionsContainer}>
+                {backgroundOptions.map((option) => (
+                    <BackgroundOptionBtn key={option.id} id={option.id} backgroundValue={option.backgroundValue} imgSrc={option.imgSrc}>
+                        {option.label}
+                    </BackgroundOptionBtn>
+                ))}
+            </div>
+        </main>
     );
 }
