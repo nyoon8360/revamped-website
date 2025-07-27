@@ -1,21 +1,31 @@
+'use client';
+
 import Image from "next/image";
 import styles from "./backgroundOptionBtn.module.scss";
-import { useBackgroundContext } from "@/context/background";
+import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export default function BackgroundOptionBtn({ id, backgroundValue, imgSrc, children }) {
 
-  const [background, setBackground] = useBackgroundContext();
-
-  console.log(background);
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   return (
     <div className={styles.mainContainer}>
-      <button id={id} onClick={() => setBackground(backgroundValue)}>
+      <Link id={id} href={generateRoute(pathname, searchParams, backgroundValue)}>
         <Image src={imgSrc} alt="" height={50} width={50}></Image>
-      </button>
+      </Link>
       <label htmlFor={id}>
         {children}
       </label>
     </div>
   );
+}
+
+function generateRoute(pathname, currentParams, newParamVal) {
+  let newSearchParamString = new URLSearchParams(currentParams.toString());
+
+  newSearchParamString.set('background', newParamVal);
+
+  return `${pathname}?${newSearchParamString.toString()}`;
 }
